@@ -6,6 +6,7 @@ var currentConnection = {
 var board;
 
 $(document).ready(function() {
+  console.log("hi");
   this.mySVG = $('body').connect();
   board = {
     _id: "",

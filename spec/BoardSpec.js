@@ -1,6 +1,9 @@
+console.log("im first");
+
 describe("createBubble", function() {
 
   beforeAll(function () {
+    spyOn($.fn, "connect");
     var e = {
       pageY : 88,
       pageX : 95
