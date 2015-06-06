@@ -17,30 +17,34 @@ a i {
   text-shadow: none;
   color: transparent;
 }
+a { display: none; }
 
 a.image1:hover {
-  content : url("http://www.autostraddle.com/wp-content/uploads/2014/06/goldfish-640x360.jpg");
+  content : url("http://www.clker.com/cliparts/3/X/C/D/x/n/smiley-face.svg");
   display: block;
   position:fixed;
 
 
 }
+
+
+
 a.image2:hover {
-  content : url("http://placecage.com/100/100");
+  content : url("http://www.clker.com/cliparts/3/X/C/D/x/n/smiley-face.svg");
   display: block;
   position:fixed;
 
 }
 
 a.image3:hover {
-  content : url("http://www.autostraddle.com/wp-content/uploads/2014/06/goldfish-640x360.jpg");
+  content : url("http://www.clker.com/cliparts/3/X/C/D/x/n/smiley-face.svg");
   display: block;
   position:fixed;
 
 }
 
 a.image4:hover {
-  content : url("http://placecage.com/100/100");
+  content : url("http://www.clker.com/cliparts/3/X/C/D/x/n/smiley-face.svg");
   display: block;
   position:fixed;
 

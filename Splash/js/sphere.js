@@ -1,4 +1,3 @@
-
     var bitmap = new Image();
     bitmap.src = 'images/bluebrain.jpg'; // Pre-load the bitmap, in conjunction with the Start button, to avoid any potential THREE.ImageUtils.loadTexture async issues.
     bitmap.onerror = function () {
