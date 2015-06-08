@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<script src="lib/Three.js"></script>
+<script src="js/FresnelShader.js"></script>
+<script src='js/threex.bubble.js'></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<body style='margin: 0px; background-color: #bbbbbb; overflow: hidden;'>
+ <script src="js/music.js"></script>
+
+ <audio preload id='Ethereal' src='sound/Ethereal.mp3'></audio>
+<script>
+
+  var renderer  = new THREE.WebGLRenderer();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  document.body.appendChild( renderer.domElement );
+  var onRenderFcts= [];
+  var scene = new THREE.Scene();
+  var camera  = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000 )
+  camera.position.z = 3
+
+     // create a texture Cube
+// var bitmap = new Image();
+//     bitmap.src = 'images/bluebrain.jpg'; // Pre-load the bitmap, in conjunction with the Start button, to avoid any potential THREE.ImageUtils.loadTexture async issues.
+//     bitmap.onerror = function () {
+//       console.error("Error loading: " + bitmap.src);
+//     }
+
+  var path  = "images/"
+  var format  = '.jpg'
+  var urls  = [
+    path + 'random' + format, path + 'random' + format,
+    path + 'random' + format, path + 'random' + format,
+    path + 'random' + format, path + 'random' + format
+  ]
+  var textureCube = THREE.ImageUtils.loadTextureCube(urls)
+  textureCube.format = THREE.RGBFormat
+
+
+  for(var i = 0; i < 100; i++){
+    ;(function(){
+      var mesh  = new THREEx.BubbleMesh()
+      scene.add(mesh)
+      // position the mesh
+      mesh.position.x = (Math.random()-0.5)*10
+      mesh.position.y = (Math.random()-0.5)*10
+      mesh.position.z = (Math.random()-0.5)*5 - 5
+      // set the scale of the mesh
+      mesh.scale.multiplyScalar( Math.random() * 1 + 1 );
+      // animate the mesh
+      onRenderFcts.push(function(delta, now){
+        var angle = 0.01  * now * Math.PI * 2;
+        mesh.position.x = 4 * Math.cos( angle + mesh.id);
+        mesh.position.y = 10 * Math.sin( angle + mesh.id * 1.1 );
+      })
+    })()
+  }
+
+
+  //    Camera Controls             //
+
+  var mouse = {x : 0, y : 0}
+  document.addEventListener('mousemove', function(event){
+    mouse.x = (event.clientX / window.innerWidth ) - 0.5
+    mouse.y = (event.clientY / window.innerHeight) - 0.5
+  }, false)
+  onRenderFcts.push(function(delta, now){
+    camera.position.x += (mouse.x*5 - camera.position.x) * (delta*3)
+    camera.position.y += (mouse.y*5 - camera.position.y) * (delta*3)
+    camera.lookAt( scene.position )
+  })
+
+  //    add a skybox
+
+  var shader  = THREE.ShaderLib[ "cube" ];
+  shader.uniforms[ "tCube" ].value = textureCube;
+  var material  = new THREE.ShaderMaterial( {
+    fragmentShader  : shader.fragmentShader,
+    vertexShader  : shader.vertexShader,
+    uniforms  : shader.uniforms,
+    side    : THREE.BackSide
+  })
+  var geometry  = new THREE.CubeGeometry(5000, 500, 500)
+  var meshSkybox  = new THREE.Mesh(geometry, material);
+  scene.add( meshSkybox );
+
+  //    render the scene            //
+
+  onRenderFcts.push(function(){
+    renderer.render( scene, camera );
+  })
+
+
+  //    loop runner             //
+
+  var lastTimeMsec= null
+  requestAnimationFrame(function animate(nowMsec){
+    // keep looping
+    requestAnimationFrame( animate );
+    // measure time
+    lastTimeMsec  = lastTimeMsec || nowMsec-1000/60
+    var deltaMsec = Math.min(200, nowMsec - lastTimeMsec)
+    lastTimeMsec  = nowMsec
+    // call each update function
+    onRenderFcts.forEach(function(onRenderFct){
+      onRenderFct(deltaMsec/1000, nowMsec/1000)
+    })
+  })
+
+</script>
+</body>
+</html>
+
+
+
