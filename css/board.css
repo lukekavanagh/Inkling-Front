@@ -1,12 +1,10 @@
 #board {
   font-family: monospace;
-  background-color: lightpink;
+  background-color: #C0C0CA;
   margin: 0;
   padding: 0;
   position: relative;
 }
-
-
 
 .bubble {
   position: absolute;
@@ -61,6 +59,16 @@
   position: absolute;
   bottom: 0px;
   min-width: 100%;
+}
+
+#trashcan {
+  position: absolute;
+  bottom: 2px;
+}
+
+.link-image {
+  max-height: 20px;
+  max-width: 20px;
 }
 
 
