@@ -1,7 +1,7 @@
 var ApiFacade = (function() {
 
-  var BACKEND_BASE_URI = 'http://localhost:5000/api/v1';
-  //var BACKEND_BASE_URI = 'http://crudbrain.herokuapp.com/api/v1';
+  //var BACKEND_BASE_URI = 'http://localhost:5000/api/v1';
+  var BACKEND_BASE_URI = 'http://crudbrain.herokuapp.com/api/v1';
 
   function getBoard (boardId) {
     $.ajax({
