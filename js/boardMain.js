@@ -9,6 +9,20 @@ var mySVG;
 $(document).ready(function() {
   facebookSdk(secureMain);
 
+ $('.stopButton').on( "click", function() {
+      var playing = true;
+      var music = document.getElementById("Drone");
+      if(playing == true){
+      music.muted = true;
+      };
+  });
+  $('.playButton').on( "click", function() {
+      var playing = false;
+      var music = document.getElementById("Drone");
+      if(playing == false){
+      music.muted = false;
+      };
+  });
 });
 
 
@@ -57,8 +71,21 @@ function secureMain() {
 
 
 function createBubble(e){
-  var randId = helper.guid();
-  var bubble = new Bubble(e.pageY, e.pageX, randId);
+  var guId = helper.guid();
+  var args = {
+    inputType: e.inputType,
+    id: guId,
+    location: {
+      left: e.pageX,
+      top: e.pageY
+    }
+  }
+  switch(args.inputType){
+    case "image":
+      args.sourceUrl = e.sourceUrl;
+      break;
+  }
+  var bubble = new Bubble(args);
   renderBubble(bubble);
   console.log(board);
   board.bubbles.push(bubble);

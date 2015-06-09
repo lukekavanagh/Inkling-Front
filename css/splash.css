@@ -583,3 +583,22 @@ html, body {
   right: 2%;
   position: absolute;
 }
+
+/*STOP PLAYING MUSIC BUTTON*/
+.stopButton {
+  margin-top: 40%;
+  right: 2%;
+  height: 5%;
+  width: 5%;
+  position: absolute;
+  z-index: 100;
+}
+
+.playButton {
+  margin-top: 40%;
+  right: 8%;
+  height: 5%;
+  width: 5%;
+  position: absolute;
+  z-index: 100;
+}

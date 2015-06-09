@@ -50,8 +50,6 @@ top = pos - iconSize/2
 
 .bubble {
   position: absolute;
-  width: 160px;
-  height: 160px;
   background-color: #A269DB;
   box-shadow: -2px 2px 5px #555;
   overflow: hidden;
@@ -118,4 +116,23 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/*STOP PLAYING MUSIC BUTTON*/
+.stopButton {
+  margin-top: 1%;
+  left: 5%;
+  height: 5%;
+  width: 5%;
+  position: absolute;
+  z-index: 100;
+}
+
+.playButton {
+  margin-top: 1%;
+  left:10%;
+  height: 5%;
+  width: 5%;
+  position: absolute;
+  z-index: 100;
 }
