@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="../css/board.css" type="text/css">
     <link rel="stylesheet" href="../css/facebook.css" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+
 
   	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/1.1.0/svg.min.js"></script>
     <script type="text/javascript" src="../lib/jquery.connectingLine.js"></script>
 
-    <script src="../lib/Three.js"></script> 
+    <script src="../lib/Three.js"></script>
 
     <script src="../js/sphere.js"></script>
-    <script src="../js/deviceMediaInput.js"></script> 
+    <script src="../js/deviceMediaInput.js"></script>
     <script src="../js/facebook.js"></script>
     <script src="../js/apiFacade.js"></script>
     <script src="../js/helper.js"></script>
@@ -31,34 +31,7 @@
   <body id="board">
     <script src="../js/sound.js"></script>
     <audio id='Drone' src='../sound/Drone.mp3'></audio>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1642565209312684',
-        cookie     : true,  // session cookies
-        xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.2'
-      });
 
-      FB.getLoginStatus(function(response) {
-         setUser(response);
-         if (!fbUser) {
-           document.getElementById('boardLink').innerHTML = 'Login with Facebook';
-         } else {
-            window.location = "/views/board.html";
-         }
-       });
-    };
-
-    // Load the SDK asynchronously
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "http://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
     <div id="logoutButton"></div>
     <div id="trashcan"><img src="../images/trashcan.png" alt="trashcan"></div>
   </body>
