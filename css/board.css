@@ -1,5 +1,15 @@
 html, body { position: fixed; height: 100%; width: 100%; }
 
+#logoutButton {
+/*  background-image: url("");
+  background-size: cover;*/
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  z-index:100;
+}
+
 #board {
   font-family: monospace;
   background-color: black;
