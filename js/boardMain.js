@@ -62,8 +62,8 @@ function createBubble(e){
 function facebookSdk(callback) {
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1642565209312684',  // Inkling (PRODUCTION)
-      //appId      : '1643906175845254',    // CRUDbrain (test)
+      //appId      : '1642565209312684',  // Inkling (PRODUCTION)
+      appId      : '1643906175845254',    // CRUDbrain (test)
       cookie     : true,  
       xfbml      : true,                  // parse social plugins on this page
       version    : 'v2.2'
