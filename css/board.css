@@ -3,20 +3,12 @@
 }
 
 #board {
-<<<<<<< HEAD
   font-family: 'Dosis', 'Lato', sans-serif;
-=======
->>>>>>> development
   background-color: black;
   margin: 0;
   padding: 0;
   position: absolute;
-<<<<<<< HEAD
-
-
-=======
   color: white;
->>>>>>> development
 }
 
 #inputOptionBox {

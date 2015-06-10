@@ -19,6 +19,7 @@ var board = (function () {
           console.log("Payload returning from load(): ", payload);
           $.extend(boardData, payload);
           render();
+          eventHandlers();
         } else {
           // TODO: handle error. Retry?
           console.log("Empty payload in board.load()");
@@ -59,7 +60,6 @@ var board = (function () {
 
         boardData.bubbles.splice(i, 1);
         save();
-        render();
         return;
       }
     }
@@ -70,7 +70,6 @@ var board = (function () {
   }
 
   function updateBubble(e, ui) {
-    console.log(e, ui);
     for (var i = 0; i < boardData.bubbles.length; i++) {
       if (e.target.id === boardData.bubbles[i].bubbleId) {
         if (ui.position) {
@@ -112,7 +111,7 @@ var board = (function () {
     });
     save();
     console.log("Connections: ", boardData.connections);
-    render();
+    renderConnections(fromId, toId, mySVG);
     fromId = null;
   }
 

@@ -11,6 +11,7 @@ html, body {
   position: fixed;
   height: 100%;
   width: 100%;
+  background-color: black;
 }
 
 a {
