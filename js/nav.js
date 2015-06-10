@@ -4,9 +4,9 @@ function nav() {
     console.log(e);
     e.stopImmediatePropagation();
     var $parent = $(this).parent('nav');
-    if($parent.hasClass('open')) {$('#inputOptionBox').hide()}
-      
+
     $parent.toggleClass("open");
+    if($parent.hasClass('open')) {$('#inputOptionBox').hide()}
     var navState = $parent.hasClass('open') ? "hide" : "show";
     $(this).attr("title", navState + " navigation");
     // Set the timeout to the animation length in the CSS.

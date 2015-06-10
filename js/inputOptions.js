@@ -7,6 +7,12 @@ function renderInputOptions() {
   var $audioOption = $('<i id="audio" class="fa fa-microphone"></i>')
   var $videoOption = $('<i id="video" class="fa fa-video-camera"></i>')
   var $imageOption = $('<i id="image" class="fa fa-picture-o"></i>')
+  var $form = $(
+    '<form id="imageUrl">' +
+      '<input type="text" id="sourceUrl" placeholder="image url here pal">' +
+      '<input type="submit" value="yep">' +
+    '</form>'
+  );
   $inputOptionBox.append($textOption);
   $inputOptionBox.append($photoOption);
   $inputOptionBox.append($audioOption);
@@ -14,6 +20,7 @@ function renderInputOptions() {
   $inputOptionBox.append($imageOption);
   // $photoOption.append($magicCameraInput);
   $photoOption.append("<img id='yourimage'>");
+  $('#board').append($form);
   $('#board').append($inputOptionBox);
   $('.fa').addClass('fa-2x') //fa-2x/3x/4x/5x
 
@@ -33,9 +40,11 @@ function renderInputOptions() {
     e.stopImmediatePropagation()
     $inputOptionBox.hide()
   })
+
 }
 
 function toggleInputOptions(e) {
+  $('#imageUrl').hide()
   if(!$('nav').hasClass('open')){
     $('#inputOptionBox').toggleClass('showing')
     if($('#inputOptionBox').hasClass('showing')) {
@@ -59,30 +68,25 @@ function showInputOptionBox(e) {
 }
 
 function hideOptionsPreventDefault(e) {
-    e.stopImmediatePropagation();
-    $inputOptionBox.hide()
+  e.stopImmediatePropagation();
+  $('#inputOptionBox').hide()
 } 
 
 function showAddUrlForm(e) {
   e.stopImmediatePropagation()
-  $form = $(
-    '<form id="imageUrl">' +
-      '<input type="text" id="sourceUrl" placeholder="image url here pal">' +
-      '<input type="submit" value="yep">' +
-    '</form>'
-  );
-  $form.css({
+  $('#imageUrl').css({
     'top': e.pageY,
     'left': e.pageX,
     'position': 'absolute'
   });
-  $('#board').append($form);
+  $('#imageUrl').show();
   $('#sourceUrl').focus();
-
-  $form.submit(function(eSubmit){
+  $('#imageUrl').submit(function(eSubmit){
     eSubmit.preventDefault();
     addUrlToModel(e);
+    $('#imageUrl').hide()
   })
+
 }
 
 function addUrlToModel(e) {
@@ -94,8 +98,9 @@ function addUrlToModel(e) {
   createBubble(e);
 }
 
-function animateOptions(options) {
-  resetOptionPosition()
+function animateOptions() {
+  var options = $('#inputOptionBox .fa')
+  resetOptionPosition(options)
   var iconSize = 16; // px
   var scale = 2.5
   // http://www.mathopenref.com/coordpolycalc.html for cartesian polygon coords below
@@ -112,7 +117,7 @@ function animateOptions(options) {
     });
   });
   for (var i = 0; i < finalTopLeftCoords.length; i++) {
-    options[i].animate({
+    $(options[i]).animate({
       'left': finalTopLeftCoords[i][1],
       'top': finalTopLeftCoords[i][0]
     }, 400)
@@ -120,10 +125,8 @@ function animateOptions(options) {
 }
 
 function resetOptionPosition(options) {
-  var options = $('#inputOptionBox .fa')
-  console.log(options);
   for (var i = 0; i < options.length; i++) {
-    options[i].css({
+    $(options[i]).css({
       'top': 0,
       'left': 0
     })
