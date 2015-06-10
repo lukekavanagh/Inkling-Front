@@ -4,6 +4,8 @@ function nav() {
     console.log(e);
     e.stopImmediatePropagation();
     var $parent = $(this).parent('nav');
+    if($parent.hasClass('open')) {$('#inputOptionBox').hide()}
+      
     $parent.toggleClass("open");
     var navState = $parent.hasClass('open') ? "hide" : "show";
     $(this).attr("title", navState + " navigation");

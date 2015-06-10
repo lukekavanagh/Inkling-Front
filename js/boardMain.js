@@ -37,8 +37,9 @@ function secureMain() {
   mySVG = $('body').connect();
 
   board.load();
+  renderInputOptions()
 
-  $("#board").on("click", renderInputOptions);
+  $("#board").on("click", toggleInputOptions);
 
   $('#board').on("click", '.bubble', function(e) {
     e.stopImmediatePropagation();
