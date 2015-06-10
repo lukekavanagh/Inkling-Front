@@ -15,15 +15,13 @@ function secureMain() {
   });
 
 
- $('.stopButton').on( "click", function() {
-    var playing = true;
-    var music = document.getElementById("Drone");
-    if(playing == true){
-      music.muted = true;
-    };
+ $('.stopButton').on( "click", function(e) {
+    e.stopImmediatePropagation(); //prevent the other click events from firing
+    document.getElementById("Drone").muted = true; //don't need the intermediate variables
   });
 
   $('.playButton').on( "click", function() {
+    //should be same as stopButton listener
     var playing = false;
     var music = document.getElementById("Drone");
     if(playing == false){
