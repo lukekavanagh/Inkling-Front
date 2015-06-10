@@ -1,3 +1,24 @@
+//in general going with an object (e.g. board = new Board()) will make it easier to test as you 
+//can stub out properties on the object (e.g. board.boardData = ...)
+//this functional style will prove difficult to unit test
+
+
+/*
+ * var Board = (function() {
+ *  var Board = function() {
+ *  }
+ *
+ *  Board.prototype.save = function() {
+ *  }
+ *  //etc.
+ *
+ *  return Board
+ *   
+ * })();
+ *
+ *
+ * */
+
 var board = (function () {
 
   var boardData = {};
@@ -170,4 +191,3 @@ var board = (function () {
     last: last
   };
 })();
-

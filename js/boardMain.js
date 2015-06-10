@@ -1,3 +1,5 @@
+//I would separate out secureMain and the facebook SDK into different files
+
 var mySVG;
 
 $(document).ready(function() {
