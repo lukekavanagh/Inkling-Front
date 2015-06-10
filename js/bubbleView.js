@@ -1,3 +1,4 @@
+//I would separate the views into a subfolder (e.g. js/views)
 function renderBubble(bubble) {
   $('#board').append(
     "<div class='bubble' id=" + bubble.bubbleId + "> <div class='header'>" +

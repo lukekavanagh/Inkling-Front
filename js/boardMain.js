@@ -1,4 +1,5 @@
 //I would separate out secureMain and the facebook SDK into different files
+//there is also duplication with splashMain
 
 var mySVG;
 
