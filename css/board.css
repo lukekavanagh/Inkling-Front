@@ -144,6 +144,11 @@ canvas {
   left: 92%;
 }
 
+#trashcanIcon {
+  position: absolute;
+  z-index: 1;
+}
+
 .logoTitle{
   z-index: 101;
   position: absolute;

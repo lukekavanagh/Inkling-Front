@@ -1,7 +1,9 @@
 // Called after board.load() returns success
 function eventHandlers() {
+
   $("#trashcan").droppable({
-    drop: function(e, ui){
+    drop: function (e, ui) {
+      console.log("DROP");
       $(ui.draggable).remove();
       board.removeBubble(ui.draggable.context.id);
     }
@@ -33,5 +35,4 @@ function eventHandlers() {
     };
   });
 
-  $("#board").on("click", renderInputOptions);
 }

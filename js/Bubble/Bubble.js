@@ -1,17 +1,17 @@
 function Bubble (){ }
 
 Bubble.prototype.render = function() {
-  var $board = $('#board');
+  var $board = $('#board')
+    .on('click', renderInputOptions)
+    .on('click', '.bubble', function (e) {
+      e.stopImmediatePropagation();
+    });
 
   console.log(this);
   var $bubble = $('<div>')
     .attr({
       id: this.bubbleId,
       class: 'bubble'
-    })
-    .offset({
-      top: this.location.top,
-      left: this.location.left
     })
     .css({
       'width': this.size.width,
@@ -24,6 +24,10 @@ Bubble.prototype.render = function() {
         // Persist position changes
         board.updateBubble(e, ui);
       }
+    })
+    .offset({
+      top: this.location.top,
+      left: this.location.left
     })
     .resizable({
       stop: function (e, ui) {
