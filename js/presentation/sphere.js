@@ -11,6 +11,8 @@ function sphere() {
   var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer(); // Fallback to canvas renderer, if necessary.
   renderer.setSize(window.innerWidth, window.innerHeight); // Set the size of the WebGL viewport.
   document.body.appendChild(renderer.domElement); // Append the WebGL viewport to the DOM.
+  document.getElementsByTagName("canvas")[0].setAttribute("class", "background-canvas");
+
 
   // Be aware that a light source is required for MeshPhongMaterial to work:
   var pointLight = new THREE.PointLight(0xFF4D4D); // Set the color of the light source (white).
@@ -40,9 +42,10 @@ function sphere() {
     render(); // Start the rendering of the animation frames.
   // }, false);
 
-  document.getElementsByTagName('canvas')[0].addEventListener('click', function () {
+  $('canvas:first').click(function (e) {
+
     console.log("Canvas clicked!");
     console.log(location);
-    location.assign(location.origin + '/views/board.html');
+    // location.assign(location.origin + '/views/board.html');
   });
 }

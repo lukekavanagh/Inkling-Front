@@ -1,60 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mind Map</title>
-    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css">
+    <title>I N K L I N G</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/board.css">
 
-    <link rel="stylesheet" href="../css/board.css" type="text/css">
-    <link rel="stylesheet" href="../css/facebook.css" type="text/css">
-
-  	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/1.1.0/svg.min.js"></script>
+  	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/svg.js/1.1.0/svg.min.js"></script>
     <script type="text/javascript" src="../lib/jquery.connectingLine.js"></script>
 
-     <script src="../js/facebook.js"></script>
-     <script src="../js/apiFacade.js"></script>
-     <script src="../js/helper.js"></script>
-     <script src="../js/bubbleView.js"></script>
-     <script src="../js/bubble.js"></script>
-     <script src="../js/connectionView.js"></script>
-     <script src="../js/boardMain.js"></script>
+    <script src="../lib/Three.js"></script>
+    <script src="../js/presentation/sphere.js"></script>
+    <script src="../js/presentation/nav.js"></script>
 
+    <script src="../js/net/facebook.js"></script>
+    <script src="../js/net/apiFacade.js"></script>
 
+    <script src="../js/Board/Board.js"></script>
+    <script src="../js/Board/bubbleHandlers.js"></script>
+    <script src="../js/Board/connectionHandlers.js"></script>
+    <script src="../js/Bubble/Bubble.js"></script>
+    <script src="../js/Bubble/eventHandlers.js"></script>
+    <script src="../js/Bubble/bubbleView.js"></script>
+    <script src="../js/Connection/Connection.js"></script>
+    <script src="../js/Connection/connectionView.js"></script>
 
+    <script src="../js/eventHandlers.js"></script>
+    <script src="../js/boardMain.js"></script>
+  </head>
 
   <body id="board">
-    <script src="../js/sound.js"></script>
     <audio id='Drone' src='../sound/Drone.mp3'></audio>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1642565209312684',
-        cookie     : true,  // session cookies
-        xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.2'
-      });
 
-      FB.getLoginStatus(function(response) {
-         setUser(response);
-         if (!fbUser) {
-           document.getElementById('boardLink').innerHTML = 'Login with Facebook';
-         } else {
-            window.location = "/views/board.html";
-         }
-       });
-    };
+    <nav>
+      <a href="" id="menuToggle" title="show menu">
+        <span class="navClosed"><i>show menu</i></span>
+      </a>
+      <a id="logoutButton" class="image1" title="Item 1">Logout</a>
+      <a class="playButton">Play Music</a>
+      <a class="stopButton">Pause Music</a>
+    </nav>
 
-    // Load the SDK asynchronously
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "http://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-    <div id="logoutButton"></div>
-    <div id="trashcan"><img src="../images/trashcan.png" alt="trashcan"></div>
+    <div id="trashcan"><img src="../images/trash.png" height="80 px" alt="trashcan"></div>
+
+      <h3 class="logoTitle">INKLING<span style="color:red">.</span></h3>
+      <img class="puzzle" src="//cdn3.iconfinder.com/data/icons/brain-games/1042/Puzzle-grey.png" width="40cm" height="40cm">
+      <p class="copyright">&copy; 2015 inkling.space</p>
   </body>
 </html>
